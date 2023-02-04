@@ -1,0 +1,313 @@
+<!-- Table of Contents (not filled in)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////
+
+            Table of Contents
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////
+
+
+1. Side navigation
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- "width=device-width" means:
+                  "instead of shrinking everything down effectively, or trying to simulate a different size of screen, whatever your device's width is, that's what's going to be used for the media queries (using CSS pixels)"
+            
+                "initial-scale=1.0"
+                Basically, don't be zoomed in or don't be zoomed out.
+            -->
+    <title>JS Testing Ground</title>
+    <link rel="stylesheet" href="css/style.css">
+
+
+<!-- ----- Favicon (Browser Tab Icon) ---- -->
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon2/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon2/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon2/favicon-16x16.png">
+<link rel="manifest" href="/img/favicon2/site.webmanifest">
+<link rel="mask-icon" href="/img/favicon2/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#77d5ff">
+<meta name="theme-color" content="#9bc1f0">
+
+</head>
+
+<body>
+
+
+
+
+<!-- /// /// /// /// /// /// /// /// /// ///
+    ///
+    ///     Rotating Tic Tac Toe Variant Replication
+    ///
+-->
+<section class="ttt-bg">
+<h1 class="tic-tac-toe-title section-title" id="ttt-title">
+    Rotating vTic Tac Toe</h1>
+
+<div class="tic-tac-toe-wrap">
+    <!-- tl/tr: top left/top right | u/i/l: upper inner  n/a  -->
+    <!-- bl/br: bot left/bot right | u/i/l:  n/a  inner lower -->
+    <img src="/img/arrow-blue.png" class="btt-quadrotate" id="tl-u">
+    <img src="/img/arrow-red.png" class="btt-quadrotate flipx" id="tl-i">
+    
+    <img src="/img/arrow-red.png" class="btt-quadrotate flipy" id="tr-u">
+    <img src="/img/arrow-blue.png" class="btt-quadrotate" id="tr-i">
+
+    <img src="/img/arrow-red.png" class="btt-quadrotate flipy" id="br-i">
+    <img src="/img/arrow-blue.png" class="btt-quadrotate" id="br-l">
+    
+    <img src="/img/arrow-blue.png" class="btt-quadrotate" id="bl-i">
+    <img src="/img/arrow-red.png" class="btt-quadrotate flipx" id="bl-l">
+
+    <!-- - -- - -   -->
+    <!-- - -- - -   -->
+    <!-- Characters -->
+    <!-- - -- - -   -->
+    <input type="radio" name="tttradio"
+    id="radio-tttchar1" class="tttchar-radio">
+        <label for="check-tttchar1">
+            <!-- <img src="/img/emotes/beidou-1.png"
+            class="ttt-char" id="tttchar1"> -->
+        </label>
+
+    <input type="radio" name="tttradio"
+    id="radio-tttchar2" class="tttchar-radio">
+        <label for="check-tttchar2">
+        <!-- <img src="/img/emotes/kageroumaru-1.png"
+            class="ttt-char" id="tttchar2"> -->
+        </label>
+
+    <input type="radio" name="tttradio"
+    id="radio-tttchar3" class="tttchar-radio">
+        <label for="check-tttchar3">
+            <!-- <img src="/img/emotes/zhongli-1.png"
+            class="ttt-char" id="tttchar3"> -->
+        </label>
+
+    <input type="radio" name="tttradio"
+    id="radio-tttchar4" class="tttchar-radio">
+        <label for="check-tttchar4">
+            <!-- <img src="/img/emotes/qiqifallen.png"
+            class="ttt-char" id="tttchar4"> -->
+        </label>
+
+
+    <!-- - - - -  -->
+    <!-- Elements -->
+    <!-- - - - -  -->
+    <img src="/img/icons/hydro-elementicon.png" class="ttt-elem"
+    id="elem-tl">
+    <img src="/img/icons/anemo-elementicon.png" class="ttt-elem"
+    id="elem-tr">
+    <img src="/img/icons/geo-elementicon.png" class="ttt-elem"
+    id="elem-bl">
+    <img src="/img/icons/pyro-elementicon.png" class="ttt-elem"
+    id="elem-br">
+
+<div class="tictactoe">
+    <div class="xo-cell quad-topleft" id="xo1" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei1">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag1">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho1">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi1">
+    </div>
+    <div class="xo-cell quad-topleft" id="xo2" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei2">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag2">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho2">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi2">
+    </div>
+    <div class="xo-cell quad-topright" id="xo3" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei3">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag3">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho3">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi3">
+    </div>
+    <div class="xo-cell quad-topright" id="xo4" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei4">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag4">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho4">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi4">
+    </div>
+    <div class="xo-cell quad-topleft" id="xo5" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei5">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag5">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho5">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi5">
+    </div>
+    <div class="xo-cell quad-topleft" id="xo6" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei6">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag6">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho6">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi6">
+    </div>
+    <div class="xo-cell quad-topright" id="xo7" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei7">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag7">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho7">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi7">
+    </div>
+    <div class="xo-cell quad-topright" id="xo8" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei8">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag8">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho8">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi8">
+    </div>
+    <div class="xo-cell quad-botleft" id="xo9" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei9">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag9">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho9">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi9">
+    </div>
+    <div class="xo-cell quad-botleft" id="xo10" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei10">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag10">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho10">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi10">
+    </div>
+    <div class="xo-cell quad-botright" id="xo11" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei11">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag11">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho11">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi11">
+    </div>
+    <div class="xo-cell quad-botright" id="xo12" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei12">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag12">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho12">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi12">
+    </div>
+    <div class="xo-cell quad-botleft" id="xo13" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei13">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag13">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho13">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi13">
+    </div>
+    <div class="xo-cell quad-botleft" id="xo14" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei14">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag14">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho14">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi14">
+    </div>
+    <div class="xo-cell quad-botright" id="xo15" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei15">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag15">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho15">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi15">
+    </div>
+    <div class="xo-cell quad-botright" id="xo16" data-cell>
+        <!-- <img src="/img/emotes/cat-1.png" class="xo-placehold"> -->
+        <img src="/img/emotes/beidou-1.png"
+        class="xo-placehold xo-hidden" id="xo-bei16">
+        <img src="/img/emotes/kageroumaru-1.png"
+        class="xo-placehold xo-hidden" id="xo-kag16">
+        <img src="/img/emotes/zhongli-1.png" 
+        class="xo-placehold xo-hidden" id="xo-zho16">
+        <img src="/img/emotes/qiqifallen.png" 
+        class="xo-placehold xo-hidden" id="xo-qiqi16">
+    </div>
+</div>
+</div> <!--tictactoe -->
+
+</section> <!-- section end -->
+
+
+
+
+
+
+</main>
+
+
+<script src="js/script.js"></script>
+</body>
+
+
+</html>

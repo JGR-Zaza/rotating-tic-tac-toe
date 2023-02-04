@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- "width=device-width" means:
+                  "instead of shrinking everything down effectively, or trying to simulate a different size of screen, whatever your device's width is, that's what's going to be used for the media queries (using CSS pixels)"
+            
+                "initial-scale=1.0"
+                Basically, don't be zoomed in or don't be zoomed out.
+            -->
+    <title>Width 100%</title>
+    <link rel="stylesheet" href="temporarycss.css">
+
+
+<!-- ----- Favicon (Browser Tab Icon) ---- -->
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon2/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon2/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon2/favicon-16x16.png">
+<link rel="manifest" href="/img/favicon2/site.webmanifest">
+<link rel="mask-icon" href="/img/favicon2/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#77d5ff">
+<meta name="theme-color" content="#9bc1f0">
+
+</head>
+
+<body style="margin:0px; height:101vh; width:100%;">
+  
+    <div style="width:100%; background-color:blue;">
+      <div style="width:50%; height:60px; background-color:pink;">Parent: width 100% <br>50% of the parent width (which is 1500px - scrollbar = 1483px) = <b>741.5px</b>, does NOT overflow, regardles of scrollbar.</div>
+    </div>
+      
+    <hr>
+      
+    <div style="width:100vw; background-color:blue;">
+        <div style="width:50%; height:60px; background-color:pink;">Parent: width 100vw <br>50% of the parent width (which is 1500px = <b>750px</b>, overflows when there is a scrollbar.</div>
+    </div>
+    <hr>
+    <div style="width:100%; background-color:blue; padding:20px;">
+        <div style="width:50%; height:60px; background-color:pink;">Parent: width 100% <br>50% of the parent width (which is 1500px - (scrollbar + left padding + right padding) = 1443px = <b>721.5px</b>), but overflow due to being offset by the padding of parent. (721.5 + 20 + 20 = 761.5)</div>
+    </div>
+    <hr>
+    <div style="width:100%; background-color:blue;">
+        <div style="width:50%; height:60px; padding:20px; background-color:pink;">Parent: width 100% <br>50% of the parent width - (which is 1500px - scrollbar = 1483px) = 741.5 - (20px + 20px) = <b>701.5px</b>), does NOT overflow, regardles of scrollbar.</div>
+    </div>
+    <hr>
+    <div style="width:100vw; background-color:blue; padding:20px;">
+        <div style="width:50%; height:60px; background-color:pink;">Parent: width 100vw <br>50% of the parent width (which is 1500px - (left padding + right padding) = 1460px = <b>730px</b>), but overflow due to padding of parent. (730 + 20 + 20 = 770px)</div>
+    </div>
+    <hr>
+    <div style="width:100vw; background-color:blue;">
+        <div style="width:50%; height:60px; background-color:pink; padding:20px;">Parent: width 100vw <br>50% of the parent width - (which is 1500px = 750 - (20px + 20px) = <b>710px</b>), overflows when there is a scrollbar.</div>
+    </div>
+    <hr>
+    <div style="width:100%; background-color:blue; margin:20px;">
+        <div style="width:50%; height:60px; background-color:pink;">Parent: width 100% <br>50% of the parent width (which is 1500px - scrollbar = 1483px) = <b>741.5px</b>, but overflows due to being offset by the margin of parent (741.5px + 20px + 20px = 761.5px)</div>
+    </div>
+    <hr>
+    <div style="width:100%; background-color:blue;">
+        <div style="width:50%; height:60px; margin:20px; background-color:pink;">Parent: width 100% <br>50% of the parent width (which is 1500px - scrollbar = 1483px) = <b>741.5px</b>, but overflow due to margin of this div. (741.5px + 20px + 20px = 761.5px)</div>
+    </div>
+    <hr>
+    <div style="width:100vw; background-color:blue; margin:20px;">
+        <div style="width:50%; height:60px; background-color:pink;">Parent: width 100vw <br>50% of the parent width (which is 1500px) = <b>750px</b>, but overflows due to margin of parent + scrollbar.</div>
+    </div>
+    <hr>
+    <div style="width:100vw; background-color:blue;">
+        <div style="width:50%; height:60px; background-color:pink; margin:20px;">Parent: width 100vw <br>50% of the parent width (which is 1500px) = <b>750px</b>, but overflows due to margin of this div + scrollbar.</div>
+    </div>
+    <hr>
+    <div style="width:100%; background-color:blue;">
+        <div style="width:calc(50% - 40px); height:60px; margin:20px; background-color:pink;">Parent: width 100% <br>50% (of the parent width - which is 50% of the available space), does not overflow, because we do it the right way - which is by compensating for CSS not adjusting for the margin automatically, but leaving it up to us to do with calc(width:50% - 40px); (ie margin border x 2)</div>
+    </div>
+    
+    </body>
+    </html>
